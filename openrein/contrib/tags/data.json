@@ -1,0 +1,7 @@
+{
+  "name": "data",
+  "description": "Query and analyze SQLite databases. Use for structured data exploration, reporting, and data-driven tasks.",
+  "tools": ["SQLiteTool"],
+  "skills": ["sql_query"],
+  "optional_deps": []
+}

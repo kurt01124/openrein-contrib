@@ -1,0 +1,7 @@
+{
+  "name": "git",
+  "description": "Run git commands, manage branches, write commit messages, and handle PR workflows. Use for version control tasks and code review.",
+  "tools": ["GitTool"],
+  "skills": ["commit", "pr", "code_review"],
+  "optional_deps": []
+}

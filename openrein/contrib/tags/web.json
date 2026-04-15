@@ -1,0 +1,7 @@
+{
+  "name": "web",
+  "description": "Control a real browser to navigate, search, and interact with any website. Use for Google search, login-gated sites, JavaScript-heavy pages, and form interactions that WebFetch cannot handle.",
+  "tools": ["BrowserTool"],
+  "skills": ["web_navigation"],
+  "optional_deps": ["playwright"]
+}

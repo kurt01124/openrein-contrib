@@ -1,0 +1,7 @@
+{
+  "name": "office",
+  "description": "Control PowerPoint, Word, and Excel via COM interface (Windows only). Use for creating or editing Office documents, generating presentations, and automating spreadsheets.",
+  "tools": ["OfficeTool"],
+  "skills": ["powerpoint", "excel", "word"],
+  "optional_deps": ["pywin32"]
+}
