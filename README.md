@@ -2,6 +2,13 @@
 
 Community Skills and Tools for [openrein](https://github.com/kurt01124/openrein).
 
+## Packs
+
+| Pack | Docs | Description |
+|------|------|-------------|
+| PowerPoint | [docs/powerpoint.md](docs/powerpoint.md) | Office Add-in bridge — create and edit slides via OOXML |
+| Playwright | [docs/playwright.md](docs/playwright.md) | Chromium browser automation — navigate, scrape, interact |
+
 ## Installation
 
 ```bash
