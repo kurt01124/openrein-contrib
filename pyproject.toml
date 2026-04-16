@@ -9,6 +9,9 @@ description = "Community Skills and Tools for openrein"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = ["openrein>=0.6.2"]
+
+[project.optional-dependencies]
+playwright = ["playwright>=1.40"]
 license = {text = "MIT"}
 keywords = ["llm", "agent", "openrein", "skills", "tools"]
 classifiers = [

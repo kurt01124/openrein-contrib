@@ -80,6 +80,7 @@ def get_skill(name: str) -> str:
 
 _TOOL_FACTORIES: dict[str, str] = {
     "powerpoint": "openrein.contrib.tools.powerpoint.create_powerpoint_tools",
+    "playwright": "openrein.contrib.tools.playwright.create_playwright_tools",
     # "word":       "openrein.contrib.tools.word.create_word_tools",
     # "excel":      "openrein.contrib.tools.excel.create_excel_tools",
     # "hwp2024":    "openrein.contrib.tools.hwp2024.create_hwp_tools",
