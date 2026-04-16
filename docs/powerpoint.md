@@ -22,19 +22,63 @@ pip install openrein openrein-contrib
 
 ### 2. Load the Add-in in PowerPoint
 
+Find the manifest path:
+
 ```bash
-# Find the manifest path
 python -c "from openrein.contrib.tools.powerpoint import _ADDIN_DIR; print(_ADDIN_DIR)"
 ```
 
 Then in PowerPoint:
-- Insert → Add-ins → My Add-ins → `...` → **Upload Add-in**
-- Select the `manifest.xml` from the path above
 
-### 3. Open the taskpane
+1. **Insert** → **Add-ins** → **My Add-ins** → `···` → **Upload Add-in**
+2. Select `manifest.xml` from the path printed above
+3. Click **OpenRein** in the Home ribbon to open the taskpane
 
-Click the **OpenRein** button in the PowerPoint ribbon.
-The taskpane shows "openrein connected" when ready.
+The taskpane status dot turns green and shows **"openrein connected"** once the bridge is live.
+
+> **Note:** The Add-in must be loaded every time PowerPoint opens.
+> Pin it via **Insert → Add-ins → My Add-ins** so it appears in the ribbon automatically.
+
+---
+
+## Add-in
+
+The Add-in is a standard Office Web Add-in (taskpane) that runs inside PowerPoint.
+
+### Files
+
+| File | Description |
+|------|-------------|
+| `addin/powerpoint/manifest.xml` | Add-in manifest — tells PowerPoint where to load the taskpane from |
+| `addin/powerpoint/taskpane.html` | Taskpane UI shell |
+| `addin/powerpoint/taskpane.js` | Bridge logic: polls for commands, executes via Office.js + JSZip |
+| `addin/powerpoint/taskpane.css` | Taskpane styles |
+
+### Bridge Server
+
+When you `import openrein.contrib.tools.powerpoint`, an embedded HTTP server starts on `localhost:19876`:
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/taskpane.html` | GET | Serves the Add-in UI |
+| `/api/poll` | GET | Add-in polls here for pending commands |
+| `/api/result` | POST | Add-in posts command results here |
+| `/api/report_context` | POST | Add-in reports current slide context |
+| `/api/status` | GET | Returns `{ connected, queue }` |
+| `/api/command` | POST | External HTTP trigger (smoke tests, scripts) |
+
+### Supported Actions (taskpane.js)
+
+| Action | Description |
+|--------|-------------|
+| `get_office_context` | Slide count, active slide index |
+| `office_command` | add_slide, delete_slide, add_text_box, add_shape, set_background, get_layouts, apply_layout, … |
+| `list_slide_shapes` | All shapes with id, type, position, size, text, font, fill |
+| `edit_slide_xml` | Full slide OOXML replacement via JSZip |
+| `edit_slide_chart` | Chart OOXML via JSZip (3-file pattern) |
+| `verify_slides` | Layout quality check (coverage, gaps, overlaps, contrast) |
+| `verify_slide_visual` | Screenshot of a specific slide (base64 PNG) |
+| `set_z_order` | Shape z-order via `Office.ZOrderType` |
 
 ---
 
