@@ -17,3 +17,9 @@ build/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Project-specific
+tests/
+.pytest_cache/
+PLAN.md
+scripts/
