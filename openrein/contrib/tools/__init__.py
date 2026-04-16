@@ -1,32 +1,30 @@
 """
-openrein.contrib.tools — Tool 레지스트리.
+openrein.contrib.tools — Tool 팩토리 모음.
 
-tags/*.json 에서 "tools": ["BrowserTool"] 처럼 이름으로 참조하면
-TOOL_REGISTRY 를 통해 실제 클래스로 매핑된다.
+각 애플리케이션별로 독립된 파일을 유지한다:
+  powerpoint.py  → create_powerpoint_tools()
+  word.py        → create_word_tools()       (예정)
+  excel.py       → create_excel_tools()      (예정)
+  hwp2024.py     → create_hwp_tools()        (예정)
 
-새 Tool 추가 방법:
-  1. tools/<name>.py 에 ToolBase 서브클래스 구현
-  2. 아래 _register_* 함수 추가
-  3. tags/<tag>.json 의 "tools" 에 이름 등록
+사용 예 (dressage agent.py):
+  from openrein.contrib.tools import create_powerpoint_tools
+  Pack(name="powerpoint", tools=create_powerpoint_tools(), skills=["powerpoint"])
 """
-
 from __future__ import annotations
 
-TOOL_REGISTRY: dict[str, type] = {}
+# PowerPoint
+try:
+    from openrein.contrib.tools.powerpoint import create_powerpoint_tools  # noqa: F401
+except ImportError:
+    def create_powerpoint_tools():  # type: ignore
+        return []
 
+# Word (예정)
+# from openrein.contrib.tools.word import create_word_tools
 
-def _try(name: str, import_path: str, class_name: str) -> None:
-    """ImportError 없이 tool 을 레지스트리에 등록."""
-    try:
-        mod = __import__(import_path, fromlist=[class_name])
-        TOOL_REGISTRY[name] = getattr(mod, class_name)
-    except ImportError:
-        pass
+# Excel (예정)
+# from openrein.contrib.tools.excel import create_excel_tools
 
-
-# --- 구현된 Tool 이 생기면 여기에 추가 ---
-
-# _try("BrowserTool", "openrein.contrib.tools.browser", "BrowserTool")
-# _try("GitTool",     "openrein.contrib.tools.git",     "GitTool")
-# _try("SQLiteTool",  "openrein.contrib.tools.sqlite",  "SQLiteTool")
-# _try("OfficeTool",  "openrein.contrib.tools.office",  "OfficeTool")
+# 한글 2024 (예정)
+# from openrein.contrib.tools.hwp2024 import create_hwp_tools

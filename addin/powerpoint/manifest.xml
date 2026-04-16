@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>d2e84a1b-f3c7-4e9d-a1b2-c3d4e5f67890</Id>
+  <Version>1.0.0</Version>
+  <ProviderName>openrein</ProviderName>
+  <DefaultLocale>ko-kr</DefaultLocale>
+  <DisplayName DefaultValue="OpenRein PowerPoint"/>
+  <Description DefaultValue="AI agent for PowerPoint — powered by openrein"/>
+  <SupportUrl DefaultValue="https://github.com"/>
+  <IconUrl DefaultValue="http://localhost:19876/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="http://localhost:19876/icon-80.png"/>
+
+  <Hosts>
+    <Host Name="Presentation"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="http://localhost:19876/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="BtnLabel"/>
+            <Description resid="BtnDesc"/>
+            <LearnMoreUrl resid="TaskpaneUrl"/>
+          </GetStarted>
+          <FunctionFile resid="TaskpaneUrl"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="OpenReinGroup">
+                <Label resid="GroupLabel"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon16"/>
+                  <bt:Image size="32" resid="Icon32"/>
+                  <bt:Image size="80" resid="Icon80"/>
+                </Icon>
+                <Control xsi:type="Button" id="ShowTaskpane">
+                  <Label resid="BtnLabel"/>
+                  <Supertip>
+                    <Title resid="BtnLabel"/>
+                    <Description resid="BtnDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon16"/>
+                    <bt:Image size="32" resid="Icon32"/>
+                    <bt:Image size="80" resid="Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OpenReinTaskpane</TaskpaneId>
+                    <SourceLocation resid="TaskpaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon16" DefaultValue="http://localhost:19876/icon-16.png"/>
+        <bt:Image id="Icon32" DefaultValue="http://localhost:19876/icon-32.png"/>
+        <bt:Image id="Icon80" DefaultValue="http://localhost:19876/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="TaskpaneUrl" DefaultValue="http://localhost:19876/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GroupLabel" DefaultValue="OpenRein AI"/>
+        <bt:String id="BtnLabel" DefaultValue="OpenRein"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="BtnDesc" DefaultValue="Open OpenRein AI agent for PowerPoint"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

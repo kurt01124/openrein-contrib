@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenRein PowerPoint</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link rel="stylesheet" href="taskpane.css">
+</head>
+<body>
+    <div id="app">
+        <div id="header">
+            <div id="header-left">
+                <img src="icon-32.png" id="header-icon" alt="">
+                <span id="app-title">openrein</span>
+            </div>
+            <span id="app-context">PowerPoint</span>
+        </div>
+        <div id="status-bar">
+            <span id="status-dot"></span>
+            <span id="status-text">Connecting...</span>
+        </div>
+        <div id="messages"></div>
+        <div id="footer">
+            <span>Send commands from the openrein agent</span>
+        </div>
+    </div>
+    <script src="taskpane.js"></script>
+</body>
+</html>

@@ -1,13 +1,14 @@
 [build-system]
-requires = ["setuptools>=61"]
-build-backend = "setuptools.backends.legacy:build"
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "openrein-contrib"
-version = "0.1.0"
+version = "0.6.0"
 description = "Community Skills and Tools for openrein"
 readme = "README.md"
 requires-python = ">=3.9"
+dependencies = ["openrein>=0.6.2"]
 license = {text = "MIT"}
 keywords = ["llm", "agent", "openrein", "skills", "tools"]
 classifiers = [
@@ -21,3 +22,6 @@ Repository = "https://github.com/kurt01124/openrein-contrib"
 
 [tool.setuptools.packages.find]
 namespaces = true
+
+[tool.setuptools.package-data]
+"openrein.contrib" = ["skills/*.md"]
