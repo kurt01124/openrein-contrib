@@ -4,14 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "openrein-contrib"
-version = "0.6.0"
+version = "0.6.1"
 description = "Community Skills and Tools for openrein"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = ["openrein>=0.6.2"]
-
-[project.optional-dependencies]
-playwright = ["playwright>=1.40"]
 license = {text = "MIT"}
 keywords = ["llm", "agent", "openrein", "skills", "tools"]
 classifiers = [
@@ -19,6 +16,9 @@ classifiers = [
     "Operating System :: OS Independent",
     "License :: OSI Approved :: MIT License",
 ]
+
+[project.optional-dependencies]
+playwright = ["playwright>=1.40"]
 
 [project.urls]
 Repository = "https://github.com/kurt01124/openrein-contrib"
