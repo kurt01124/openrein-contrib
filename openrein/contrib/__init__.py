@@ -23,7 +23,7 @@ Or use with an openrein Engine directly:
 
 from pathlib import Path
 
-__version__ = "0.6.0"
+__version__ = "0.6.2"
 
 # Skills directory (bundled with this package)
 SKILLS_DIR = str(Path(__file__).parent / "skills")
